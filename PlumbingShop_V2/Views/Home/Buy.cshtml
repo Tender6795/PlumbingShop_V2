@@ -1,0 +1,21 @@
+﻿
+@using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>Фио</td>
+            <td><input type="text" name="BuerName"/></td>
+        </tr>
+        <tr>
+            <td>Контактный телефон</td>
+            <td><input type="tel" name="Phone" /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="Email" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Сделать заказ" name="btn"/>
+    <input type="submit" value="Отмена" name="btn" />
+}
+

@@ -1,0 +1,36 @@
+﻿@*ViewBag.Manufacturers*@
+@using PlumbingShop_V2.Models
+@using (Html.BeginForm("MNFCTRRRMV", "Home", FormMethod.Post))
+{
+    <input type="submit" name="btn" value="Добавить" />
+        <td><input value="0" name="id" hidden="hidden" /> </td>
+}
+<table class="table">
+   
+    @foreach (Manufacturer p in ViewBag.Manufacturers)
+    {
+        using (Html.BeginForm("MNFCTRRRMV", "Home", FormMethod.Post))
+        {
+            <tr>
+                <td><input type="hidden" value="@p.Id" name="Id" /></td>
+
+                <td>
+                   @p.Name
+                </td>
+                <td>
+                    @p.Coutry
+                </td>
+                @if (@p.showerCubicles.Count==0 && @p.toilets.Count==0 && @p.baches.Count==0)
+                {
+                    <td><input type="submit" name="btn" value="Удалить" /></td>
+                }
+                else
+                {
+                   
+                    <td>Удалить невозможно</td>
+                }
+                <td><input type="submit" name="btn" value="Редактировать" /></td>
+            </tr>
+        }
+    }
+    </table>

@@ -1,0 +1,68 @@
+﻿@using PlumbingShop_V2.Models
+<h2>Корзина</h2>
+
+@*@using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+    {*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фотография</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Всего</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{double sum = 0; }
+        @for (int i = 0; i < Session.Count; i++)
+        {
+            if (Session[i] != null) { 
+            using (Html.BeginForm("ChangeCount", "Home", FormMethod.Post))
+            {
+                <tr>
+                    <td><img src="@(((TmpBasket)Session[i]).PathPicture)" width="50" /></td>
+                    @*<td> @(((TmpBasket)Session[i]).Category)</td>*@
+                    <td><input name="Name" readonly value=" @(((TmpBasket)Session[i]).Name)" /></td>
+                    <td><input name="Price" readonly value=" @(((TmpBasket)Session[i]).Price)" />Гривен</td>
+                    <td><input type="hidden" value="@i" name="SesName" /></td>
+
+                    <td>
+                        <button class="btn-success plus" value="+" name="btn">+</button>
+                        <input name="Count" readonly value=" @(((TmpBasket)Session[i]).Count)" />
+                        Шт
+                        <button class="btn-danger minus" value="-" name="btn">-</button>
+                    </td>
+
+                    <td> @(((TmpBasket)Session[i]).Count * ((TmpBasket)Session[i]).Price) Гривен</td>
+                    @{ sum += ((TmpBasket)Session[i]).Count * ((TmpBasket)Session[i]).Price;}
+                </tr>
+                            }
+                        }
+        }
+    </tbody>
+</table>
+
+<h2>ИТОГО: <label id="sum"> @sum.ToString() </label>  грн</h2>
+@if (Session.Count > 0)
+{
+    <a href="/Home/Buy" class="btn">Купить</a>
+}
+
+@*  }*@
+
+@*@Scripts.Render("~/Scripts/jquery-3.0.0.min.js")
+    <script>
+        $(".plus").click(function (e) {
+
+            var sibl = $(this).siblings("label");
+            sibl.text(+(sibl.text()) + 1);
+        });
+        $(".minus").click(function (e) {
+            var sibl = $(this).siblings("label");
+            if (sibl.text() != 1) {
+                sibl.text(+(sibl.text()) - 1);
+            }
+        });
+    </script>*@

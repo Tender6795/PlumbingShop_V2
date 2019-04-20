@@ -1,0 +1,26 @@
+﻿@using PlumbingShop_V2.Models
+@using (Html.BeginForm("RMV", "Home", FormMethod.Post))
+{
+    <input type="submit" name="btn" value="Добавить" />
+     <td><input value="0" name="id" hidden="hidden" /> </td>
+                <td><input value="@ViewBag.category" name="category" hidden="hidden" /> </td>
+}
+
+<table class="table">
+    @foreach (Product p in ViewBag.Prods)
+    {
+        using (Html.BeginForm("RMV", "Home", FormMethod.Post))
+        {
+            <tr>
+                <td><input value="@p.Id" name="id" hidden="hidden" /> </td>
+                <td><input value="@ViewBag.category" name="category" hidden="hidden" /> </td>
+                <td><img src=@p.PathPicture height="65" /> </td>
+                <td> @p.Name</td>
+                <td><input type="submit" name="btn" value="Удалить" /></td>
+                <td><input type="submit" name="btn" value="Редактировать" /></td>
+            </tr>
+        }
+    }
+</table>
+
+

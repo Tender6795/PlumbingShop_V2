@@ -1,0 +1,149 @@
+﻿@using PlumbingShop_V2.Models
+<h1>Редактирование</h1>
+@using (Html.BeginForm("RDCT", "Home", FormMethod.Post))
+{
+    <input type="hidden" name="category" value="@ViewBag.category"/>
+    <table>
+        <tr><td><input type="hidden" value="@ViewBag.Prods.Id" name="Id" /></td></tr>
+        <tr>
+            <td>
+                <label>Имя</label>
+            </td>
+            <td>
+                <input name="Name" value="@ViewBag.Prods.Name" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Описание</label>
+            </td>
+            <td>
+                <input name="Description" value="@ViewBag.Prods.Description" />
+            </td>
+        </tr>
+
+        <tr>
+            <td><label>Цена</label></td>
+            <td><input name="Price" value="@ViewBag.Prods.Price" /></td>
+        </tr>
+
+        <tr>
+            <td><label>Путь к картинке</label></td>
+            <td><input name="PathPicture" value="@ViewBag.Prods.PathPicture" /></td>
+        </tr>
+
+
+        <tr>
+            <td><label>Производитель</label></td>
+            <td>
+                <select name="ManufacturerId">
+                    @foreach (var g in @ViewBag.Manufacturer)
+                {
+                    if (ViewBag.Prods.Id == @g.Id)
+                    {
+                            <option value="@g.Id" name="@g.Id" selected>@g.Name</option>
+                        }
+                        else
+                        {
+                            <option value="@g.Id" name="@g.Id">@g.Name</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+
+        @*Унитазы*@
+        @if (ViewBag.category == "Унитазы")
+        {
+            <tr>
+                <td><label>Бачок</label></td>
+                <td>
+                    <select name="Tank">
+                        <option value="true" @(ViewBag.Prods.Tank ? "selected" : "")>Есть</option>
+                        <option value="false" @(ViewBag.Prods.Tank ? "" : "selected")>Нет</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Тип установки</label>
+                </td>
+                <td>
+                    <select name="Instalation">
+                        @foreach (var i in ViewBag.instalation)
+                    {
+                            <option value="@i" @(ViewBag.Prods.Instalation == i ? "selected" : "" )>@i</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Тип слива</label>
+                </td>
+                <td>
+                    <select name="Drain">
+                        @foreach (var i in ViewBag.drain)
+                    {
+                            <option value="@i" @(ViewBag.Prods.Drain == i ? "selected" : "" )>@i</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        }
+        @*Ванны*@
+        @if (ViewBag.category == "Ванны" || ViewBag.category == "Душевые кабинки")
+        {
+            <tr>
+                <td><label>Длина</label></td>
+                <td><input name="Length" value="@ViewBag.Prods.Length" /></td>
+            </tr>
+            <tr>
+                <td><label>Ширина</label></td>
+                <td><input name="Width" value="@ViewBag.Prods.Width" /></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Форма</label>
+                </td>
+                <td>
+                    <select name="Form">
+                        @foreach (var i in ViewBag.form)
+                    {
+                            <option value="@i" @(ViewBag.Prods.Form == i ? "selected" : "" )>@i</option>
+                    }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Материал</label>
+                </td>
+                <td>
+                    <select name="Material">
+                        @foreach (var i in ViewBag.material)
+                    {
+                            <option value="@i" @(ViewBag.Prods.Material == i ? "selected" : "" )>@i</option>
+                    }
+                    </select>
+                </td>
+            </tr>
+
+        }
+        @if (ViewBag.category == "Душевые кабинки")
+        {
+            <tr>
+                <td><label>Высота поддона</label></td>
+                <td><input name="Pallet_height" value="@ViewBag.Prods.Pallet_height" /></td>
+            </tr>
+        }
+
+    </table>
+    <input type="submit" value="Редактировать" />
+}
+

@@ -1,0 +1,57 @@
+﻿@* ViewBag.Manufacturers*@
+@using PlumbingShop_V2.Models
+
+@using (Html.BeginForm("MNFCTRRRDCT", "Home", FormMethod.Post))
+{
+    if (@ViewBag.redact != 0)
+    {
+
+
+    <table>
+        <tr><td><input type="hidden" value="@ViewBag.Manufacturers.Id" name="Id" /></td></tr>
+        <tr>
+            <td>
+                <label>Название</label>
+            </td>
+            <td>
+                <input name="Name" value='@ViewBag.Manufacturers.Name' />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label>Страна производитель</label>
+            </td>
+            <td>
+                <input name="Coutry" value="@ViewBag.Manufacturers.Coutry" />
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Редактировать" />
+    }
+    else
+    {
+        <table>
+            <tr><td><input type="hidden" value=0 name="Id" /></td></tr>
+            <tr>
+                <td>
+                    <label>Название</label>
+                </td>
+                <td>
+                    <input name="Name" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Страна производитель</label>
+                </td>
+                <td>
+                    <input name="Coutry" />
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="Добавить" />
+    
+}
+}

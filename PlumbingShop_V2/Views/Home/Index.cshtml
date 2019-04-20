@@ -1,0 +1,117 @@
+﻿@*ViewBag.Toilets*@
+@using PlumbingShop_V2.Models
+
+
+
+
+@*<h1>Унитазы</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фотография</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Фирма</th>
+            <th>Страна Производитель</th>
+            <th>Тип Установки</th>
+            <th>Тип Слива</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Toilet t in ViewBag.Toilets)
+        {
+            <tr>
+                <td> <img src="@t.PathPicture" width="100" height="100" /></td>
+                <td hidden>@t.Id</td>
+                <td>@t.Name</td>
+                <td>@t.Price</td>
+                <td>@t.Manufacturer.Name</td>
+                <td>@t.Manufacturer.Coutry</td>
+                <td>@t.Instalation</td>
+                <td>@t.Drain</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<h1>Ванны</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фотография</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Фирма</th>
+            <th>Страна Производитель</th>
+            <th>Форма</th>
+            <th>Материал</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Bath t in ViewBag.Bath)
+        {
+            <tr>
+                <td> <img src="@t.PathPicture" width="100" height="100" /></td>
+                <td hidden>@t.Id</td>
+                <td>@t.Name</td>
+                <td>@t.Price</td>
+                <td>@t.Manufacturer.Name</td>
+                <td>@t.Manufacturer.Coutry</td>
+                <td>@t.Form</td>
+                <td>@t.Material</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<h1>Душевые кабинки</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фотография</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Фирма</th>
+            <th>Страна Производитель</th>
+            <th>Форма</th>
+            <th>Материал</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ShowerCubicle t in ViewBag.ShowerCubicle)
+        {
+            <tr>
+                <td> <img src="@t.PathPicture" width="100" height="100" /></td>
+                <td hidden>@t.Id</td>
+                <td>@t.Name</td>
+                <td>@t.Price</td>
+                <td>@t.Manufacturer.Name</td>
+                <td>@t.Manufacturer.Coutry</td>
+                <td>@t.Form</td>
+                <td>@t.Material</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>*@
+
+@*<div id="nav" class="navigation">
+    <div class="navigation__inner">
+      
+        
+    </div>
+</div>
+<button id="show">Toggle Menu</button>
+<script>
+        var btn = document.getElementById('show');
+        var nav = document.getElementById('nav');
+
+        btn.addEventListener('click', function () {
+            nav.classList.toggle('active');
+        });
+</script>*@

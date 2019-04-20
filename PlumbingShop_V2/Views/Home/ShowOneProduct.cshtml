@@ -1,0 +1,136 @@
+﻿@using (Html.BeginForm("AddToTmpBasket", "Home", FormMethod.Post))
+{
+    <input type="hidden" name="category" value="@ViewBag.category" />
+    <input type="hidden" name="Id" value="@ViewBag.Prods.Id" />
+    <input type="hidden" name="Name" value="@ViewBag.Prods.Name"/>
+        <input type="hidden" name="Price" value="@ViewBag.Prods.Price"/>
+        <input type="hidden" name="PathPicture" value="@ViewBag.Prods.PathPicture" />
+        
+       
+            <img src="@ViewBag.Prods.PathPicture" height="250"  />
+        
+       
+            <table style="position:absolute;top:100px;left:550px">
+
+                <tr>
+                    <td>
+                        <label>Имя</label>
+                    </td>
+                    <td>
+                        <label name="Name" value="@ViewBag.Prods.Name">@ViewBag.Prods.Name</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label>Описание</label>
+                    </td>
+                    <td>
+                        <label value="@ViewBag.Prods.Description">@ViewBag.Prods.Description</label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label>Цена</label></td>
+                    <td><label name="Price" value="@ViewBag.Prods.Price">@ViewBag.Prods.Price</label></td>
+                </tr>
+
+                @*<tr>
+                        <td><label>Путь к картинке</label></td>
+                        <td><label name="PathPicture" value="@ViewBag.Prods.PathPicture">@ViewBag.Prods.PathPicture</label></td>
+                    </tr>*@
+
+
+                <tr>
+                    <td><label>Производитель</label></td>
+                    <td>
+                        <label>@ViewBag.Prods.Manufacturer.Name</label>
+
+                    </td>
+                </tr>
+
+
+                @if (ViewBag.category == "Унитазы")
+                {
+                    <tr>
+                        <td><label>Бачок</label></td>
+                        <td>
+
+                            <label>@(ViewBag.Prods.Tank ? "Есть" : "Нету") </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label> Тип установки </label>
+                        </td>
+
+
+                        <td>
+
+
+
+                            <label>@ViewBag.Prods.Instalation</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label> Тип слива </label>
+
+
+                        </td>
+
+
+                        <td>
+
+                            <label>@ViewBag.Prods.Drain</label>
+
+                        </td>
+                    </tr>
+                }
+
+                @if (ViewBag.category == "Ванны" || ViewBag.category == "Душевые кабинки")
+                {
+                    <tr>
+                        <td><label>Длина</label></td>
+                        <td><label value="@ViewBag.Prods.Length">@ViewBag.Prods.Length</label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Ширина</label></td>
+                        <td><label value="@ViewBag.Prods.Width">@ViewBag.Prods.Width</label></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Форма</label>
+                        </td>
+                        <td>
+
+                            <label>@ViewBag.Prods.Form</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Материал</label>
+                        </td>
+                        <td>
+
+                            <label>@ViewBag.Prods.Material </label>
+                        </td>
+                    </tr>
+
+                }
+                @if (ViewBag.category == "Душевые кабинки")
+                {
+                    <tr>
+                        <td><label>Высота поддона</label></td>
+                        <td><label value="@ViewBag.Prods.Pallet_height">@ViewBag.Prods.Pallet_height</label></td>
+                    </tr>
+                }
+
+            </table>
+            <input type="submit" value="Добавить в корзину" style="position:absolute;top:370px;left:0px"/>
+       
+}

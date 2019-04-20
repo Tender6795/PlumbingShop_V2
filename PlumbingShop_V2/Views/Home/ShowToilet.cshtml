@@ -1,0 +1,35 @@
+﻿@using PlumbingShop_V2.Models
+<h1> @ViewBag.category</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фотография</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Фирма</th>
+            <th>Страна Производитель</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var t in ViewBag.Prod)
+        {
+            <tr>
+                <td><a href="/Home//ShowOneProduct?id=@t.Id&category=@ViewBag.category"> <img src="@t.PathPicture" width="100" height="100" /></a></td>
+                <td hidden>@t.Id</td>
+                <td><a href="/Home//ShowOneProduct?id=@t.Id&category=@ViewBag.category">@t.Name</a></td>
+                <td>@t.Price</td>
+                <td>@t.Manufacturer.Name</td>
+                <td>@t.Manufacturer.Coutry</td>
+                
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+
+
